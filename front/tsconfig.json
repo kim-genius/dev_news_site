@@ -18,17 +18,26 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react",
+    "baseUrl":".",
+    "paths": {
+      "@hooks/*": ["/src/hooks/*"],
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["layouts/*"],
+      "@pages/*": ["src/pages/*"],
+      "@utils/*": ["src/utils/*"],
+      "@typings/*": ["src/typings/*"]
+    }
   },
   "include": [
     "src"
   ],
-  "paths": {
-    "@hooks/*": ["hooks/*"],
-    "@components/*": ["components/*"],
-    "@layouts/*": ["layouts/*"],
-    "@pages/*": ["pages/*"],
-    "@utils/*": ["utils/*"],
-    "@typings/*": ["typings/*"]
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs",
+      "moduleResolution": "Node",
+      "target": "es5",
+      "esModuleInterop": true
+    }
   }
 }
