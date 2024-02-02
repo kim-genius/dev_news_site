@@ -19,14 +19,14 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "baseUrl":".",
+    "baseUrl":"./src/",
     "paths": {
-      "@hooks/*": ["/src/hooks/*"],
-      "@components/*": ["src/components/*"],
+      "@hooks/*": ["hooks/*"],
+      "@components/*": ["components/*"],
       "@layouts/*": ["layouts/*"],
-      "@pages/*": ["src/pages/*"],
-      "@utils/*": ["src/utils/*"],
-      "@typings/*": ["src/typings/*"]
+      "@pages/*": ["pages/*"],
+      "@utils/*": ["utils/*"],
+      "@typings/*": ["typings/*"]
     }
   },
   "include": [
