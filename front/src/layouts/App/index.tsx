@@ -9,7 +9,7 @@ const Home = loadable(() => import('@pages/Home'))
 
 function App() {
   return (
-    <div style={{width:'100%',display:'flex',justifyContent:'space-around'}} >
+    <div style={{width:'100%',display:'flex',justifyContent:'space-between'}} >
       <Navbar></Navbar>
         <Routes>
           <Route path='/' element={<Home/>}></Route>
