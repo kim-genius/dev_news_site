@@ -5,14 +5,14 @@ import Navbar from '@layouts/Navbar';
 import Notification from '@layouts/Notification';
 
 
-const Home = loadable(() => import('@pages/Home'))
+const Article = loadable(() => import('@layouts/Article'))
 
 function App() {
   return (
-    <div style={{width:'100%',display:'flex',justifyContent:'space-between'}} >
+    <div style={{width:'100%',display:'flex',justifyContent:'space-between',height:`20rem`}} >
       <Navbar></Navbar>
         <Routes>
-          <Route path='/' element={<Home/>}></Route>
+          <Route path='/' element={<Article/>}></Route>
         </Routes>
      <Notification></Notification>
     </div>
