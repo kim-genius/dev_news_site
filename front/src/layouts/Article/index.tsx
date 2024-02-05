@@ -1,36 +1,57 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import { News, Articles, Container, Header } from './styles'
 import axios from 'axios'
 
-const Article = () => {
+export interface articleApi {
+    author:string, 
+    content:string,
+    description:string,
+    publishedAt:string, 
+    source : {id:string,name:string},
+    title:string,
+    url:string,
+    urlToImage: string
+}
 
+const Article = () => {
+    const [articleData,setArticleData] = useState([])
     const newsArticle = useCallback(()=>{
         axios.get('api/article')
-        .then((res)=>{console.log(res)})
-    },[])
+        .then((res)=>{setArticleData(res.data.articles),console.log(res.data.articles)})
+    },[articleData,setArticleData])
     newsArticle()
 
+    
   return (
     <Container>
       <Header>
         sort
       </Header>
       <Articles>
-        <News>
-        <img src='https://velog.velcdn.com/images/heelieben/post/aae00279-723b-40e3-bcea-cb547b73b60f/image.png' alt='이미지'/>
-            <div className='articleBox'>
-          <h1>
-            제목
-          </h1>
-          <span>
-            기사날짜
-          </span>
-          <p>
-            내용
-          </p>
-          </div>
-          
-        </News>
+
+        {
+          articleData.map((res:articleApi)=>{
+            return(
+            <News>
+             
+              <img src = {`${res.urlToImage}`} alt='이미지'/>
+                <div className='articleBox'>
+              <h1>
+                {res.title}
+              </h1>
+              <span>
+                {res.publishedAt}
+              </span>
+              <p>
+                {res.content}
+              </p>
+              </div>
+              
+            </News>
+            )
+          })
+        }
+       
       </Articles>
     </Container>
   )

@@ -28,6 +28,7 @@ export const Articles = styled.div`
     height:auto;
     display:flex;
     align-content:center;
+    flex-direction:column;
 `
 export const News = styled.article`
         width:100%;
@@ -42,10 +43,11 @@ export const News = styled.article`
             margin-left:30px;
         }
         & h1{
-
+            width:100%;
+            font-size:1rem;
         }
         & p{
-
+            font-size:0.7rem;
         }
         & img{
             width:40%;
