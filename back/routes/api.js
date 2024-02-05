@@ -7,13 +7,22 @@ const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI(apikey);
 // To query /v2/top-headlines
 // All options passed to topHeadlines are optional, but you need to include at least one of them
-newsapi.v2.topHeadlines({
-  q: 'bitcoin',
-  category: 'business',
-  language: 'en'
-}).then(response => {
-  console.log(response);
-})
+newsapi.v2.everything({
+    q: 'bitcoin',
+    from: '2024-01-05',
+    to: '2024-02-01',
+    language: 'en',
+    sortBy: 'relevancy',
+    page: 2
+  }).then(response => {
+    console.log(response);
+    /*
+      {
+        status: "ok",
+        articles: [...]
+      }
+    */
+  });
 
 
 

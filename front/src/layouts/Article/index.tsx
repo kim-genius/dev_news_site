@@ -1,7 +1,10 @@
 import React from 'react'
 import { Article, Articles, Container, Header } from './styles'
+import axios from 'axios'
 
 const Home = () => {
+    
+
   return (
     <Container>
       <Header>
