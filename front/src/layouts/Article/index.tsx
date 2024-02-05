@@ -1,9 +1,14 @@
-import React from 'react'
-import { Article, Articles, Container, Header } from './styles'
+import React, { useCallback } from 'react'
+import { News, Articles, Container, Header } from './styles'
 import axios from 'axios'
 
-const Home = () => {
-    
+const Article = () => {
+
+    const newsArticle = useCallback(()=>{
+        axios.get('api/article')
+        .then((res)=>{console.log(res)})
+    },[])
+    newsArticle()
 
   return (
     <Container>
@@ -11,7 +16,7 @@ const Home = () => {
         sort
       </Header>
       <Articles>
-        <Article>
+        <News>
         <img src='https://velog.velcdn.com/images/heelieben/post/aae00279-723b-40e3-bcea-cb547b73b60f/image.png' alt='이미지'/>
             <div className='articleBox'>
           <h1>
@@ -25,10 +30,10 @@ const Home = () => {
           </p>
           </div>
           
-        </Article>
+        </News>
       </Articles>
     </Container>
   )
 }
 
-export default Home
+export default Article

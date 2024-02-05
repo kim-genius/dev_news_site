@@ -187,6 +187,17 @@ module.exports = function (webpackEnv) {
   };
 
   return {
+    devServer:{
+      proxy: {
+        // '/api/'로 시작하는 모든 요청을 'http://localhost:3005'로 프록시합니다.
+        '/api/': {
+          target: 'http://localhost:3005',
+          changeOrigin: true,
+          // 다른 옵션들도 필요에 따라 추가할 수 있습니다.
+        },
+        // 다른 프록시 설정도 필요한 경우 추가할 수 있습니다.
+      },
+    },
     target: ['browserslist'],
     // Webpack noise constrained to errors and warnings
     stats: 'errors-warnings',

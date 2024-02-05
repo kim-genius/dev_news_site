@@ -29,7 +29,7 @@ export const Articles = styled.div`
     display:flex;
     align-content:center;
 `
-export const Article = styled.article`
+export const News = styled.article`
         width:100%;
         height:300px;
         align-items:center;
