@@ -2,28 +2,18 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { News, Articles, Container, Header } from './styles'
 import { Scrollbars } from 'react-custom-scrollbars';
 import axios from 'axios'
+import useSWR from 'swr'
+import { articleApi } from '@typings/d';
+import fetcher from '@utils/fetcher';
 
-export interface articleApi {
-    author:string, 
-    content:string,
-    description:string,
-    publishedAt:string, 
-    source : {id:string,name:string},
-    title:string,
-    url:string,
-    urlToImage: string
-}
+
 
 const Article = () => {
-    const [articleData,setArticleData] = useState([])
-    const newsArticle = useCallback(()=>{
-        axios.get('api/article')
-        .then((res)=>setArticleData(res.data.articles))
-    },[])
 
-    useEffect(()=>{
-      newsArticle()
-    },[])
+    const {data:articleData} = useSWR<articleApi[]>('api/article',fetcher)
+
+
+
    
 
     
@@ -36,7 +26,7 @@ const Article = () => {
       <Articles>
 
         {
-          articleData.map((res:articleApi,index:number)=>{
+          articleData?.map((res:articleApi,index:number)=>{
             return(
             <News key ={index}>
              
