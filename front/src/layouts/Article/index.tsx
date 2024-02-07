@@ -18,7 +18,7 @@ const Article = () => {
     const [articleData,setArticleData] = useState([])
     const newsArticle = useCallback(()=>{
         axios.get('api/article')
-        .then((res)=>{setArticleData(res.data.articles),console.log(res.data.articles)})
+        .then((res)=>setArticleData(res.data.articles))
     },[])
 
     useEffect(()=>{
@@ -29,7 +29,7 @@ const Article = () => {
     
   return (
     <Container>
-     <Scrollbars autoHide >
+     <Scrollbars autoHide>
       <Header>
         sort
       </Header>
