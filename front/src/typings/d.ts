@@ -1,10 +1,7 @@
 export interface articleApi {
-    author:string, 
-    content:string,
-    description:string,
-    publishedAt:string, 
-    source : {id:string,name:string},
-    title:string,
-    url:string,
-    urlToImage: string
+    lastBuildDate:string,
+    items : [{[key:string]:string}],
+    total: number,
+    start:number,
+    display:number
 }

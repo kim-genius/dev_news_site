@@ -5,7 +5,7 @@ const Notification = () => {
   return (
     <Container>Noti
       <Search>
-        <input></input>
+        <input style={{textAlign:'center'}}placeholder='뉴스 검색'></input>
       </Search>
     </Container>
   )

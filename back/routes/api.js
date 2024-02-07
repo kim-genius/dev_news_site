@@ -1,26 +1,22 @@
 const express = require("express");
 const router = express.Router();
 const dotenv = require('dotenv').config()
-const apikey = dotenv.parsed.apiKey
-const NewsAPI = require('newsapi');
+let request = require('request');
 
-const newsapi = new NewsAPI(apikey);
+let client_id = dotenv.parsed.client_id;
+let client_secret = dotenv.parsed.client_secret;
 
 
 router.get('/article',(req,res)=>{
-   // To query /v2/top-headlines
-// All options passed to topHeadlines are optional, but you need to include at least one of them
-  
-            newsapi.v2.everything({
-            q: 'technology',
-            from: '2024-02-01',
-            to: '2024-02-05',
-            language: 'en',
-            sortBy: 'popularity',
-            page: 1
-        }).then(response => {
-            res.json(response)
-        });
+    let api_url = `https://openapi.naver.com/v1/search/news.json?query=${encodeURI("개발자")}&display=10&start=1&sort=sim`;
+    let options = {
+        url: api_url,
+        headers: {'X-Naver-Client-Id':client_id, 'X-Naver-Client-Secret': client_secret}
+     };
+    request.get(options,(error, response, body)=>{
+            console.log(body)
+            res.json(body)
+    })
         
         
 })

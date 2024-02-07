@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { News, Articles, Container, Header } from './styles'
 import { Scrollbars } from 'react-custom-scrollbars';
-import axios from 'axios'
 import useSWR from 'swr'
 import { articleApi } from '@typings/d';
 import fetcher from '@utils/fetcher';
@@ -10,10 +9,8 @@ import fetcher from '@utils/fetcher';
 
 const Article = () => {
 
-    const {data:articleData} = useSWR<articleApi[]>('api/article',fetcher)
-
-
-    
+    const {data:articleData,error} = useSWR('api/article',fetcher,{dedupingInterval:1000})
+  console.log(articleData)
   return (
     <Container>
      <Scrollbars autoHide>
@@ -22,27 +19,28 @@ const Article = () => {
       </Header>
       <Articles>
 
-        {
-          articleData?.map((res:articleApi,index:number)=>{
+        {articleData ? 
+          articleData.items?.map((res:any,index:number)=>{
+            console.log("items 값",res)
             return(
             <News key ={index}>
              
-              <img src = {`${res.urlToImage}`} alt='이미지'/>
+             
                 <div className='articleBox'>
               <h1>
                 {res.title}
               </h1>
               <span>
-                {res.publishedAt}
+                {res.pubDate}
               </span>
               <p>
-                {res.content}
+                {res.description}
               </p>
               </div>
               
             </News>
             )
-          })
+          }):<div>로딩 중</div>
         }
        
       </Articles>
