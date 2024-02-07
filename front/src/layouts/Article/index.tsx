@@ -13,9 +13,6 @@ const Article = () => {
     const {data:articleData} = useSWR<articleApi[]>('api/article',fetcher)
 
 
-
-   
-
     
   return (
     <Container>
