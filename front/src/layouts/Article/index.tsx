@@ -1,5 +1,6 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { News, Articles, Container, Header } from './styles'
+import { Scrollbars } from 'react-custom-scrollbars';
 import axios from 'axios'
 
 export interface articleApi {
@@ -18,21 +19,26 @@ const Article = () => {
     const newsArticle = useCallback(()=>{
         axios.get('api/article')
         .then((res)=>{setArticleData(res.data.articles),console.log(res.data.articles)})
-    },[articleData,setArticleData])
-    newsArticle()
+    },[])
+
+    useEffect(()=>{
+      newsArticle()
+    },[])
+   
 
     
   return (
     <Container>
+     <Scrollbars autoHide >
       <Header>
         sort
       </Header>
       <Articles>
 
         {
-          articleData.map((res:articleApi)=>{
+          articleData.map((res:articleApi,index:number)=>{
             return(
-            <News>
+            <News key ={index}>
              
               <img src = {`${res.urlToImage}`} alt='이미지'/>
                 <div className='articleBox'>
@@ -53,6 +59,7 @@ const Article = () => {
         }
        
       </Articles>
+      </Scrollbars>
     </Container>
   )
 }

@@ -13,10 +13,10 @@ router.get('/article',(req,res)=>{
   
             newsapi.v2.everything({
             q: 'technology',
-            from: '2024-01-05',
-            to: '2024-02-01',
+            from: '2024-02-01',
+            to: '2024-02-05',
             language: 'en',
-            sortBy: 'relevancy',
+            sortBy: 'popularity',
             page: 1
         }).then(response => {
             res.json(response)
