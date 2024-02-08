@@ -9,8 +9,7 @@ import fetcher from '@utils/fetcher';
 
 const Article = () => {
 
-    const {data:articleData,error} = useSWR('api/article',fetcher,{dedupingInterval:1000})
-  console.log(articleData)
+    const {data:articleData,error} = useSWR('api/article',fetcher)
   return (
     <Container>
      <Scrollbars autoHide>
@@ -25,7 +24,7 @@ const Article = () => {
             return(
             <News key ={index}>
              
-             
+             <img src ='https://velog.velcdn.com/images/heelieben/post/b5926f2b-d3d7-48c2-8f02-bc1356400d27/image.png'></img>
                 <div className='articleBox'>
               <h1>
                 {res.title}
