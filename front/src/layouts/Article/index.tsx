@@ -27,7 +27,7 @@ const Article = () => {
              <img src ='https://velog.velcdn.com/images/heelieben/post/b5926f2b-d3d7-48c2-8f02-bc1356400d27/image.png'></img>
                 <div className='articleBox'>
               <h1>
-                {res.title}
+                {res.title.replace(/&quot;/g, '"').replace(/<\/?b>/g,'')}
               </h1>
               <span>
                 {res.pubDate}
