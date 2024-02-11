@@ -24,7 +24,7 @@ export const Header = styled.header`
     }
 `
 export const Articles = styled.div`
-    width:80%;
+    width:70%;
     height:auto;
     display:flex;
     align-content:center;
