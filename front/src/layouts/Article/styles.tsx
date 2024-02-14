@@ -24,39 +24,44 @@ export const Header = styled.header`
     }
 `
 export const Articles = styled.div`
-    width:70%;
+    width:80%;
     height:auto;
     display:flex;
     align-content:center;
     flex-direction:column;
-    margin-left:10%;
+    margin-left:5rem;
  
     
 `
 export const News = styled.article`
         width:100%;
-        height:300px;
+        height:250px;
         align-items:center;
         display:flex;
         justify-content:left;
         border:2px solid rgba(0,0,0,0.3);
         margin-bottom:5%;
         border-radius:15px;
-        padding:7rem;
+        padding:0rem 1rem;
         border-radius:15px;
         & .articleBox{
             margin-left:30px;
         }
         & h1{
-            width:100%;
+            width:30rem;
             font-size:1.5rem;
+            flex-wrap:nowrap;
         }
         & p{
             font-size:0.7rem;
-            width:100%;
+            width:30rem;
         }
         & img{
-            width:30%;
+            width:10rem;
+        }
+        :hover{
+            background-color:rgba(0,0,0,0.1);
+            cursor: pointer;
         }
 
 `

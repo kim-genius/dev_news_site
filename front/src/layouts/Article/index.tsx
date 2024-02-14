@@ -4,8 +4,7 @@ import { Scrollbars } from 'react-custom-scrollbars';
 import useSWR from 'swr'
 import { articleApi } from '@typings/d';
 import fetcher from '@utils/fetcher';
-import dayjs from 'dayjs';
-
+import dayjs from 'dayjs'
 
 
 const Article = () => {
@@ -15,7 +14,7 @@ const Article = () => {
     <Container>
      <Scrollbars autoHide>
       <Header>
-        sort
+        news
       </Header>
       <Articles>
 
@@ -31,10 +30,11 @@ const Article = () => {
                 {res.title.replace(/&quot;/g, '"').replace(/<\/?b>/g,'')}
               </h1>
               <span>
-                {dayjs(res.pubDate).format('YYYY/MM/DD h:MMA')}
+                {dayjs(res.pubDate).format('YYYY-MM-DD hh:mmA')}
               </span>
               <p>
-                {res.description}
+                {res.description.replace(/&quot;/g, '"').replace(/<\/?b>/g,'')
+               }
               </p>
               </div>
               
