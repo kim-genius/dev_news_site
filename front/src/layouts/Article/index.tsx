@@ -14,7 +14,7 @@ const Article = () => {
     <Container>
      <Scrollbars autoHide>
       <Header>
-        news
+        News
       </Header>
       <Articles>
 
