@@ -29,28 +29,34 @@ export const Articles = styled.div`
     display:flex;
     align-content:center;
     flex-direction:column;
+    margin-left:10%;
+ 
+    
 `
 export const News = styled.article`
         width:100%;
         height:300px;
         align-items:center;
-        border:1px solid black;
         display:flex;
         justify-content:left;
+        border:2px solid rgba(0,0,0,0.3);
+        margin-bottom:5%;
+        border-radius:15px;
         padding:7rem;
-        border-radius:5px;
+        border-radius:15px;
         & .articleBox{
             margin-left:30px;
         }
         & h1{
             width:100%;
-            font-size:1rem;
+            font-size:1.5rem;
         }
         & p{
             font-size:0.7rem;
+            width:100%;
         }
         & img{
-            width:40%;
+            width:30%;
         }
 
 `

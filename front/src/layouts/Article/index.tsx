@@ -4,6 +4,7 @@ import { Scrollbars } from 'react-custom-scrollbars';
 import useSWR from 'swr'
 import { articleApi } from '@typings/d';
 import fetcher from '@utils/fetcher';
+import dayjs from 'dayjs';
 
 
 
@@ -30,7 +31,7 @@ const Article = () => {
                 {res.title.replace(/&quot;/g, '"').replace(/<\/?b>/g,'')}
               </h1>
               <span>
-                {res.pubDate}
+                {dayjs(res.pubDate).format('YYYY/MM/DD h:MMA')}
               </span>
               <p>
                 {res.description}
