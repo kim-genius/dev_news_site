@@ -49,7 +49,7 @@ export const News = styled.article`
         }
         & h1{
             width:30rem;
-            font-size:1.5rem;
+            font-size:1.8rem;
             flex-wrap:nowrap;
         }
         & p{
