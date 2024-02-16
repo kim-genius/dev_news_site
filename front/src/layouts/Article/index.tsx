@@ -4,12 +4,21 @@ import { Scrollbars } from 'react-custom-scrollbars';
 import useSWR from 'swr'
 import { articleApi } from '@typings/d';
 import fetcher from '@utils/fetcher';
-import dayjs from 'dayjs'
-
+import dayjs from 'dayjs';
+import useSWRInfinite from 'swr/infinite';
 
 const Article = () => {
 
-    const {data:articleData,error} = useSWR('api/article',fetcher)
+  
+  const getKey = (pageIndex:number, previousPageData:string[]) => {
+    if (previousPageData && !previousPageData.length) return null // 끝에 도달
+    return `/users?page=${pageIndex}&limit=10`                    // SWR 키
+  }
+    const {data:articleData} = useSWR('api/article',fetcher);
+    const { data, error, isLoading, isValidating, mutate, size, setSize } = useSWRInfinite(getKey, fetcher)
+
+
+
   return (
     <Container>
      <Scrollbars autoHide>
