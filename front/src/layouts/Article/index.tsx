@@ -10,14 +10,14 @@ import useSWRInfinite from 'swr/infinite';
 const Article = () => {
 
   
-  const getKey = (pageIndex:number, previousPageData:string[]) => {
-    if (previousPageData && !previousPageData.length) return null // 끝에 도달
-    return `/users?page=${pageIndex}&limit=10`                    // SWR 키
-  }
+  // const getKey = (pageIndex:number, previousPageData:string[]) => {
+  //   if (previousPageData && !previousPageData.length) return null // 끝에 도달
+  //   return `/users?page=${pageIndex}&limit=10`                    // SWR 키
+  // }
     const {data:articleData} = useSWR('api/article',fetcher);
-    const { data, error, isLoading, isValidating, mutate, size, setSize } = useSWRInfinite(getKey, fetcher)
+  //   const { data, error, isLoading, isValidating, mutate, size, setSize } = useSWRInfinite(getKey, fetcher)
 
-
+  // console.log(data)
 
   return (
     <Container>
