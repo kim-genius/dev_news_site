@@ -6,10 +6,11 @@ import { articleApi } from '@typings/d';
 import fetcher from '@utils/fetcher';
 import dayjs from 'dayjs';
 import useSWRInfinite from 'swr/infinite';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Article = () => {
+  const navigate = useNavigate()
 
-  
   // const getKey = (pageIndex:number, previousPageData:string[]) => {
   //   if (previousPageData && !previousPageData.length) return null // 끝에 도달
   //   return `/users?page=${pageIndex}&limit=10`                    // SWR 키
@@ -18,7 +19,9 @@ const Article = () => {
   //   const { data, error, isLoading, isValidating, mutate, size, setSize } = useSWRInfinite(getKey, fetcher)
 
   // console.log(data)
-
+  const linkToNews = useCallback((res:any)=>
+    window.location.href=`${res.link}`
+  ,[])
   return (
     <Container>
      <Scrollbars autoHide>
@@ -29,9 +32,9 @@ const Article = () => {
 
         {articleData ? 
           articleData.items?.map((res:any,index:number)=>{
-            console.log("items 값",res)
+            console.log("items 값",res.link)
             return(
-            <News key ={index}>
+            <News key ={index} onClick={()=>linkToNews(res)}>
              
              <img src ='https://velog.velcdn.com/images/heelieben/post/b5926f2b-d3d7-48c2-8f02-bc1356400d27/image.png'></img>
                 <div className='articleBox'>

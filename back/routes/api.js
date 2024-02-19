@@ -8,7 +8,7 @@ let client_secret = dotenv.parsed.client_secret;
 
 
 router.get('/article',(req,res)=>{
-    let api_url = `https://openapi.naver.com/v1/search/news.json?query=${encodeURI("개발자")}&display=20&start=2&sort=sim`;
+    let api_url = `https://openapi.naver.com/v1/search/news.json?query=${encodeURI("개발자")}&display=100&start=2&sort=sim`;
     let options = {
         url: api_url,
         headers: {'X-Naver-Client-Id':client_id, 'X-Naver-Client-Secret': client_secret}
